@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Solicitação de Agendamento - Teleconsulta / Atenção Especializada</title>
-    <!-- Font Awesome para ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <style>
         /* ===== RESET E BASE ===== */
@@ -29,7 +28,7 @@
             width: 100%;
         }
 
-        /* ===== CABEÇALHO (com gradiente e efeito glass) ===== */
+        /* ===== CABEÇALHO ===== */
         .header {
             background: linear-gradient(135deg, #0b3b5c 0%, #1a5f7a 40%, #2a7f9c 100%);
             color: white;
@@ -104,13 +103,6 @@
             margin-right: 12px;
         }
 
-        .header .subtitle {
-            font-size: 1rem;
-            opacity: 0.85;
-            font-weight: 400;
-            margin-top: 4px;
-        }
-
         .header .diretoria {
             font-size: 1rem;
             font-weight: 500;
@@ -128,11 +120,6 @@
             border-radius: 16px;
             backdrop-filter: blur(4px);
             border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        .header-right .diretora {
-            font-size: 1rem;
-            font-weight: 500;
         }
 
         .header-right .creditos {
@@ -172,28 +159,145 @@
             border-radius: 10px;
         }
 
-        .page-title-bar .title-tag {
-            background: #e8f0fe;
-            color: #1a5f7a;
-            padding: 6px 18px;
-            border-radius: 30px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
+        /* ===== BOTÃO DESTAQUE REAPROVEITAMENTO ===== */
+        .destaque-section {
+            padding: 40px 30px 10px 30px;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(8px);
         }
 
-        /* ===== GRADE DE CARDS (com muito estilo) ===== */
+        .destaque-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            width: 100%;
+            padding: 24px 32px;
+            background: linear-gradient(135deg, #0b3b5c 0%, #1a5f7a 50%, #2a7f9c 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            box-shadow: 0 8px 28px rgba(26, 95, 122, 0.35);
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+            border: 2px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .destaque-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+            transition: left 0.6s;
+        }
+
+        .destaque-btn:hover::before {
+            left: 100%;
+        }
+
+        .destaque-btn:hover {
+            transform: translateY(-4px) scale(1.01);
+            box-shadow: 0 16px 40px rgba(26, 95, 122, 0.45);
+        }
+
+        .destaque-btn i {
+            font-size: 1.6rem;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 12px;
+            border-radius: 14px;
+        }
+
+        .destaque-btn .destaque-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 2px;
+        }
+
+        .destaque-btn .destaque-text .titulo {
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .destaque-btn .destaque-text .subtitulo {
+            font-size: 0.85rem;
+            font-weight: 400;
+            opacity: 0.8;
+        }
+
+        .destaque-btn .arrow-icon {
+            background: transparent;
+            padding: 0;
+            font-size: 1.2rem;
+            margin-left: auto;
+            transition: transform 0.3s;
+        }
+
+        .destaque-btn:hover .arrow-icon {
+            transform: translateX(6px);
+        }
+
+        /* ===== SEÇÕES DE TEMA ===== */
+        .tema-section {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(8px);
+            padding: 0 30px;
+        }
+
+        .tema-section:last-of-type {
+            padding-bottom: 40px;
+            border-radius: 0 0 24px 24px;
+        }
+
+        .tema-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 32px 0 8px 0;
+            margin-bottom: 8px;
+        }
+
+        .tema-header .tema-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #e8f4fc, #d4e9f7);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: #1a5f7a;
+            flex-shrink: 0;
+        }
+
+        .tema-header .tema-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #0b3b5c;
+            letter-spacing: -0.3px;
+        }
+
+        .tema-header .tema-line {
+            flex: 1;
+            height: 2px;
+            background: linear-gradient(90deg, #d4e9f7, transparent);
+            border-radius: 4px;
+            margin-left: 8px;
+        }
+
+        /* ===== GRADE DE CARDS ===== */
         .card-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
             gap: 28px;
-            padding: 40px 30px;
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(8px);
-            border-radius: 0 0 24px 24px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            margin-bottom: 30px;
+            padding: 20px 0 10px 0;
         }
 
         .card {
@@ -314,7 +418,7 @@
             transform: translateX(4px);
         }
 
-        /* Variação de cores nos cards (detalhe) */
+        /* Variação de cores nos cards */
         .card:nth-child(3n+1) .card-icon-wrapper {
             background: linear-gradient(135deg, #fef3e8, #fde8d0);
             color: #c0763a;
@@ -350,7 +454,7 @@
             text-align: center;
             box-shadow: 0 2px 12px rgba(0, 0, 0, 0.02);
             border: 1px solid rgba(0, 0, 0, 0.02);
-            margin-top: 8px;
+            margin-top: 30px;
         }
 
         .footer .footer-brand {
@@ -411,8 +515,31 @@
                 font-size: 1.1rem;
             }
 
+            .destaque-section {
+                padding: 24px 16px 0 16px;
+            }
+
+            .destaque-btn {
+                padding: 18px 20px;
+                font-size: 1.1rem;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .destaque-btn .destaque-text .titulo {
+                font-size: 1.05rem;
+            }
+
+            .tema-section {
+                padding: 0 16px;
+            }
+
+            .tema-section:last-of-type {
+                padding-bottom: 24px;
+            }
+
             .card-grid {
-                padding: 24px 16px;
+                padding: 12px 0 6px 0;
                 gap: 20px;
             }
 
@@ -436,7 +563,20 @@
 
             .card-grid {
                 grid-template-columns: 1fr;
-                padding: 16px 12px;
+                padding: 8px 0;
+            }
+
+            .destaque-btn {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .destaque-btn .destaque-text {
+                align-items: center;
+            }
+
+            .destaque-btn .arrow-icon {
+                margin-left: 0;
             }
         }
     </style>
@@ -465,193 +605,227 @@
             <i class="fas fa-th-large"></i>
             Teleconsulta Arquivos e Ferramentas
         </div>
-        <span class="title-tag"><i class="fas fa-link"></i> 9 links disponíveis</span>
     </div>
 
-    <!-- ===== GRADE DE CARDS ===== -->
-    <section class="card-grid">
+    <!-- ===== BOTÃO DESTAQUE: REAPROVEITAMENTO ===== -->
+    <div class="destaque-section">
+        <a href="https://docs.google.com/spreadsheets/d/1_WJhJQQXcxn0Yucyr_rv_HuKs7wc3p4oeb69oyhoPU4/edit?gid=119359330#gid=119359330" target="_blank" class="destaque-btn">
+            <i class="fas fa-pen-fancy"></i>
+            <div class="destaque-text">
+                <span class="titulo">Reaproveitamento Teleconsulta</span>
+                <span class="subtitulo">Oferta por Distrito — Acesse aqui</span>
+            </div>
+            <i class="fas fa-arrow-right arrow-icon"></i>
+        </a>
+    </div>
 
-        <!-- Card 0 -->
-        <div class="card">
-            <div class="card-icon-wrapper"><i class="fas fa-pen-fancy"></i></div>
-            <div class="card-title">Reaproveitamento Teleconsulta</div>
-            <div class="card-desc">Oferta por Distrito</div>
-            <a href="https://docs.google.com/spreadsheets/d/1_WJhJQQXcxn0Yucyr_rv_HuKs7wc3p4oeb69oyhoPU4/edit?gid=119359330#gid=119359330" target="_blank" class="card-btn">
-                Acessar <i class="fas fa-arrow-right"></i>
-            </a>
+    <!-- ===== TEMA 1: PLANILHAS PARA LIGAÇÕES POR DISTRITO ===== -->
+    <section class="tema-section">
+        <div class="tema-header">
+            <div class="tema-icon"><i class="fas fa-phone-volume"></i></div>
+            <span class="tema-title">Planilhas para Ligações por Distrito</span>
+            <div class="tema-line"></div>
         </div>
 
-        <!-- Card 1 -->
-        <div class="card">
-            <div class="card-icon-wrapper"><i class="fas fa-phone-volume"></i></div>
-            <div class="card-title"> Distrito Eldorado Fila para Ligações</div>
-            <div class="card-desc">Lista de espera para contato telefônico</div>
-            <a href="https://docs.google.com/spreadsheets/d/1NrLJ7ulMx93VXse-k8C4PX7FkGPLEZ0yTQSIVQeNItg/edit?gid=175443153#gid=175443153" target="_blank" class="card-btn">
-                Acessar <i class="fas fa-arrow-right"></i>
-            </a>
+        <div class="card-grid">
+
+            <!-- Distrito Eldorado -->
+            <div class="card">
+                <div class="card-icon-wrapper"><i class="fas fa-phone-volume"></i></div>
+                <div class="card-title">Distrito Eldorado Fila para Ligações</div>
+                <div class="card-desc">Lista de espera para contato telefônico</div>
+                <a href="https://docs.google.com/spreadsheets/d/1NrLJ7ulMx93VXse-k8C4PX7FkGPLEZ0yTQSIVQeNItg/edit?gid=175443153#gid=175443153" target="_blank" class="card-btn">
+                    Acessar <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Distrito Industrial -->
+            <div class="card">
+                <div class="card-icon-wrapper"><i class="fas fa-phone-volume"></i></div>
+                <div class="card-title">Distrito Industrial Fila para Ligações</div>
+                <div class="card-desc">Lista de espera para contato telefônico</div>
+                <a href="https://docs.google.com/spreadsheets/d/1NrLJ7ulMx93VXse-k8C4PX7FkGPLEZ0yTQSIVQeNItg/edit?gid=1574171907#gid=1574171907" target="_blank" class="card-btn">
+                    Acessar <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Distrito Vargem das Flores -->
+            <div class="card">
+                <div class="card-icon-wrapper"><i class="fas fa-phone-volume"></i></div>
+                <div class="card-title">Distrito Vargem das Flores Fila para Ligações</div>
+                <div class="card-desc">Lista de espera para contato telefônico</div>
+                <a href="https://docs.google.com/spreadsheets/d/1NrLJ7ulMx93VXse-k8C4PX7FkGPLEZ0yTQSIVQeNItg/edit?gid=450560883#gid=450560883" target="_blank" class="card-btn">
+                    Acessar <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Distrito Perolandia -->
+            <div class="card">
+                <div class="card-icon-wrapper"><i class="fas fa-phone-volume"></i></div>
+                <div class="card-title">Distrito Perolandia Fila para Ligações</div>
+                <div class="card-desc">Lista de espera para contato telefônico</div>
+                <a href="https://docs.google.com/spreadsheets/d/1NrLJ7ulMx93VXse-k8C4PX7FkGPLEZ0yTQSIVQeNItg/edit?gid=1466188866#gid=1466188866" target="_blank" class="card-btn">
+                    Acessar <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Distrito Nacional -->
+            <div class="card">
+                <div class="card-icon-wrapper"><i class="fas fa-phone-volume"></i></div>
+                <div class="card-title">Distrito Nacional Fila para Ligações</div>
+                <div class="card-desc">Lista de espera para contato telefônico</div>
+                <a href="https://docs.google.com/spreadsheets/d/1NrLJ7ulMx93VXse-k8C4PX7FkGPLEZ0yTQSIVQeNItg/edit?gid=100420631#gid=100420631" target="_blank" class="card-btn">
+                    Acessar <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Distrito Ressaca -->
+            <div class="card">
+                <div class="card-icon-wrapper"><i class="fas fa-phone-volume"></i></div>
+                <div class="card-title">Distrito Ressaca Fila para Ligações</div>
+                <div class="card-desc">Lista de espera para contato telefônico</div>
+                <a href="https://docs.google.com/spreadsheets/d/1NrLJ7ulMx93VXse-k8C4PX7FkGPLEZ0yTQSIVQeNItg/edit?gid=735605400#gid=735605400" target="_blank" class="card-btn">
+                    Acessar <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Distrito Riacho -->
+            <div class="card">
+                <div class="card-icon-wrapper"><i class="fas fa-phone-volume"></i></div>
+                <div class="card-title">Distrito Riacho Fila para Ligações</div>
+                <div class="card-desc">Lista de espera para contato telefônico</div>
+                <a href="https://docs.google.com/spreadsheets/d/1NrLJ7ulMx93VXse-k8C4PX7FkGPLEZ0yTQSIVQeNItg/edit?gid=915546723#gid=915546723" target="_blank" class="card-btn">
+                    Acessar <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Distrito Sede -->
+            <div class="card">
+                <div class="card-icon-wrapper"><i class="fas fa-phone-volume"></i></div>
+                <div class="card-title">Distrito Sede Fila para Ligações</div>
+                <div class="card-desc">Lista de espera para contato telefônico</div>
+                <a href="https://docs.google.com/spreadsheets/d/1NrLJ7ulMx93VXse-k8C4PX7FkGPLEZ0yTQSIVQeNItg/edit?gid=1370812175#gid=1370812175" target="_blank" class="card-btn">
+                    Acessar <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ===== TEMA 2: ARQUIVOS COM CONSOLIDADOS ===== -->
+    <section class="tema-section">
+        <div class="tema-header">
+            <div class="tema-icon"><i class="fas fa-chart-pie"></i></div>
+            <span class="tema-title">Arquivos com Consolidados</span>
+            <div class="tema-line"></div>
         </div>
 
-         <!-- Card 2 -->
-        <div class="card">
-            <div class="card-icon-wrapper"><i class="fas fa-phone-volume"></i></div>
-            <div class="card-title"> Distrito Industrial Fila para Ligações</div>
-            <div class="card-desc">Lista de espera para contato telefônico</div>
-            <a href="https://docs.google.com/spreadsheets/d/1NrLJ7ulMx93VXse-k8C4PX7FkGPLEZ0yTQSIVQeNItg/edit?gid=1574171907#gid=1574171907" target="_blank" class="card-btn">
-                Acessar <i class="fas fa-arrow-right"></i>
-            </a>
+        <div class="card-grid">
+
+            <!-- Arquivo Geral -->
+            <div class="card">
+                <div class="card-icon-wrapper"><i class="fas fa-clipboard-list"></i></div>
+                <div class="card-title">Arquivo Geral - Registro das Ligações</div>
+                <div class="card-desc">Registro de todas ligações por Distrito</div>
+                <a href="https://docs.google.com/spreadsheets/d/1NrLJ7ulMx93VXse-k8C4PX7FkGPLEZ0yTQSIVQeNItg/edit?gid=2065378832#gid=2065378832" target="_blank" class="card-btn">
+                    Acessar <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Consolidado Ligações -->
+            <div class="card">
+                <div class="card-icon-wrapper"><i class="fas fa-chart-pie"></i></div>
+                <div class="card-title">Consolidado - Ligações</div>
+                <div class="card-desc">Quantitativo de Ligações por Distrito</div>
+                <a href="https://docs.google.com/spreadsheets/d/1NrLJ7ulMx93VXse-k8C4PX7FkGPLEZ0yTQSIVQeNItg/edit?gid=1793434457#gid=1793434457" target="_blank" class="card-btn">
+                    Acessar <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Controle de Agendamentos -->
+            <div class="card">
+                <div class="card-icon-wrapper"><i class="fas fa-clipboard-list"></i></div>
+                <div class="card-title">Controle de Agendamentos - Acesso Interno</div>
+                <div class="card-desc">Agendamentos Detalhado por Distrito</div>
+                <a href="https://docs.google.com/spreadsheets/d/11X7DQcngdN51yFYodEWBmMCc8Pi-YFbgQ4IQ7Ca93IU/edit?gid=0#gid=0" target="_blank" class="card-btn">
+                    Acessar <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Consolidado Agendamentos -->
+            <div class="card">
+                <div class="card-icon-wrapper"><i class="fas fa-brain"></i></div>
+                <div class="card-title">Consolidado Agendamentos</div>
+                <div class="card-desc">Quantitativo de Agendamentos por Distrito</div>
+                <a href="https://docs.google.com/spreadsheets/d/11X7DQcngdN51yFYodEWBmMCc8Pi-YFbgQ4IQ7Ca93IU/edit?gid=1603937153#gid=1603937153" target="_blank" class="card-btn">
+                    Acessar <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Requalificação da Neurologia -->
+            <div class="card">
+                <div class="card-icon-wrapper"><i class="fas fa-phone-volume"></i></div>
+                <div class="card-title">Requalificação da Neurologia</div>
+                <div class="card-desc">Pausado Temporariamente</div>
+                <a href="https://docs.google.com/spreadsheets/d/1ZwzPVQAifNLfJJO1lFr1BvQd6e6G3yC5C2H4Ry2N43k/edit?gid=621702727#gid=621702727" target="_blank" class="card-btn">
+                    Acessar <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ===== TEMA 3: LINKS DIVERSOS ===== -->
+    <section class="tema-section">
+        <div class="tema-header">
+            <div class="tema-icon"><i class="fas fa-link"></i></div>
+            <span class="tema-title">Links Diversos</span>
+            <div class="tema-line"></div>
         </div>
 
-        <!-- Card 3 -->
-        <div class="card">
-            <div class="card-icon-wrapper"><i class="fas fa-phone-volume"></i></div>
-            <div class="card-title"> Distrito Vargem das Flores Fila para Ligações</div>
-            <div class="card-desc">Lista de espera para contato telefônico</div>
-            <a href="https://docs.google.com/spreadsheets/d/1NrLJ7ulMx93VXse-k8C4PX7FkGPLEZ0yTQSIVQeNItg/edit?gid=450560883#gid=450560883" target="_blank" class="card-btn">
-                Acessar <i class="fas fa-arrow-right"></i>
-            </a>
+        <div class="card-grid">
+
+            <!-- Plataforma Feluma -->
+            <div class="card">
+                <div class="card-icon-wrapper"><i class="fas fa-hospital"></i></div>
+                <div class="card-title">Plataforma Feluma</div>
+                <div class="card-desc">Portal institucional Feluma</div>
+                <a href="https://portal-feluma.sydle.com/home" target="_blank" class="card-btn">
+                    Acessar <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Contatos UBS's -->
+            <div class="card">
+                <div class="card-icon-wrapper"><i class="fas fa-phone-alt"></i></div>
+                <div class="card-title">Contatos UBS's</div>
+                <div class="card-desc">Lista completa de todas as UBS</div>
+                <a href="https://regulacaoconsolidados-dot.github.io/contatosdasubs/" target="_blank" class="card-btn">
+                    Acessar <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Pesquisa por Endereços -->
+            <div class="card">
+                <div class="card-icon-wrapper"><i class="fas fa-map-pin"></i></div>
+                <div class="card-title">Pesquisa por Endereços</div>
+                <div class="card-desc">Localize unidades por endereço</div>
+                <a href="https://app.powerbi.com/view?r=eyJrIjoiYTRiZDcyZWYtMzAwNS00NmYyLTk3N2EtYWEwYTk2NTFhMmY1IiwidCI6ImFlODYzMzdlLTU3NWUtNDMzMC05NDc2LTkzZGU2ODJiMDAyMCJ9" target="_blank" class="card-btn">
+                    Acessar <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Pesquisa por CNS -->
+            <div class="card">
+                <div class="card-icon-wrapper"><i class="fas fa-id-card"></i></div>
+                <div class="card-title">Pesquisa por CNS</div>
+                <div class="card-desc">Consulta ao Cartão Nacional de Saúde</div>
+                <a href="https://cnesadm.datasus.gov.br/cnesadm/publico/usuarios/cadastro" target="_blank" class="card-btn">
+                    Acessar <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
         </div>
-
-        <!-- Card 4 -->
-        <div class="card">
-            <div class="card-icon-wrapper"><i class="fas fa-phone-volume"></i></div>
-            <div class="card-title"> Distrito Perolandia Fila para Ligações</div>
-            <div class="card-desc">Lista de espera para contato telefônico</div>
-            <a href="https://docs.google.com/spreadsheets/d/1NrLJ7ulMx93VXse-k8C4PX7FkGPLEZ0yTQSIVQeNItg/edit?gid=1466188866#gid=1466188866" target="_blank" class="card-btn">
-                Acessar <i class="fas fa-arrow-right"></i>
-            </a>
-        </div>
-
-        <!-- Card 5 -->
-        <div class="card">
-            <div class="card-icon-wrapper"><i class="fas fa-phone-volume"></i></div>
-            <div class="card-title"> Distrito Nacional Fila para Ligações</div>
-            <div class="card-desc">Lista de espera para contato telefônico</div>
-            <a href="https://docs.google.com/spreadsheets/d/1NrLJ7ulMx93VXse-k8C4PX7FkGPLEZ0yTQSIVQeNItg/edit?gid=100420631#gid=100420631" target="_blank" class="card-btn">
-                Acessar <i class="fas fa-arrow-right"></i>
-            </a>
-        </div>
-
-        <!-- Card 6 -->
-        <div class="card">
-            <div class="card-icon-wrapper"><i class="fas fa-phone-volume"></i></div>
-            <div class="card-title"> Distrito Ressaca Fila para Ligações</div>
-            <div class="card-desc">Lista de espera para contato telefônico</div>
-            <a href="https://docs.google.com/spreadsheets/d/1NrLJ7ulMx93VXse-k8C4PX7FkGPLEZ0yTQSIVQeNItg/edit?gid=735605400#gid=735605400" target="_blank" class="card-btn">
-                Acessar <i class="fas fa-arrow-right"></i>
-            </a>
-        </div>
-
-        <!-- Card 7 -->
-        <div class="card">
-            <div class="card-icon-wrapper"><i class="fas fa-phone-volume"></i></div>
-            <div class="card-title"> Distrito Riacho Fila para Ligações</div>
-            <div class="card-desc">Lista de espera para contato telefônico</div>
-            <a href="https://docs.google.com/spreadsheets/d/1NrLJ7ulMx93VXse-k8C4PX7FkGPLEZ0yTQSIVQeNItg/edit?gid=915546723#gid=915546723" target="_blank" class="card-btn">
-                Acessar <i class="fas fa-arrow-right"></i>
-            </a>
-        </div>
-
-        <!-- Card 8 -->
-        <div class="card">
-            <div class="card-icon-wrapper"><i class="fas fa-phone-volume"></i></div>
-            <div class="card-title"> Distrito Sede Fila para Ligações</div>
-            <div class="card-desc">Lista de espera para contato telefônico</div>
-            <a href="https://docs.google.com/spreadsheets/d/1NrLJ7ulMx93VXse-k8C4PX7FkGPLEZ0yTQSIVQeNItg/edit?gid=1370812175#gid=1370812175" target="_blank" class="card-btn">
-                Acessar <i class="fas fa-arrow-right"></i>
-            </a>
-        </div>
-
-        <!-- Card 9 -->
-        <div class="card">
-            <div class="card-icon-wrapper"><i class="fas fa-clipboard-list"></i></div>
-            <div class="card-title">Arquivo Geral - Registro das Ligações</div>
-            <div class="card-desc">Registro de todas ligações por Distrito</div>
-            <a href="https://docs.google.com/spreadsheets/d/1NrLJ7ulMx93VXse-k8C4PX7FkGPLEZ0yTQSIVQeNItg/edit?gid=2065378832#gid=2065378832" target="_blank" class="card-btn">
-                Acessar <i class="fas fa-arrow-right"></i>
-            </a>
-        </div>
-
-         <!-- Card 10 -->
-        <div class="card">
-            <div class="card-icon-wrapper"><i class="fas fa-chart-pie"></i></div>
-            <div class="card-title">Consolidado - Ligações</div>
-            <div class="card-desc">Quantitativo de Ligações por Distrito</div>
-            <a href="https://docs.google.com/spreadsheets/d/1NrLJ7ulMx93VXse-k8C4PX7FkGPLEZ0yTQSIVQeNItg/edit?gid=1793434457#gid=1793434457" target="_blank" class="card-btn">
-                Acessar <i class="fas fa-arrow-right"></i>
-            </a>
-        </div>
-
-        <!-- Card 11-->
-        <div class="card">
-            <div class="card-icon-wrapper"><i class="fas fa-clipboard-list"></i></div>
-            <div class="card-title">Controle de Agendamentos- Acesso Interno</div>
-            <div class="card-desc">Agendamentos Detalhado por Distrito</div>
-            <a href="https://docs.google.com/spreadsheets/d/11X7DQcngdN51yFYodEWBmMCc8Pi-YFbgQ4IQ7Ca93IU/edit?gid=0#gid=0" target="_blank" class="card-btn">
-                Acessar <i class="fas fa-arrow-right"></i>
-            </a>
-        </div>
-
-        <!-- Card 12 -->
-        <div class="card">
-            <div class="card-icon-wrapper"><i class="fas fa-brain"></i></div>
-            <div class="card-title">Consolidado Agendamentos</div>
-            <div class="card-desc">Quantitativo de Agendamentos por Distrito</div>
-            <a href="https://docs.google.com/spreadsheets/d/11X7DQcngdN51yFYodEWBmMCc8Pi-YFbgQ4IQ7Ca93IU/edit?gid=1603937153#gid=1603937153" target="_blank" class="card-btn">
-                Acessar <i class="fas fa-arrow-right"></i>
-            </a>
-        </div>
-
-        <!-- Card 13 -->
-        <div class="card">
-            <div class="card-icon-wrapper"><i class="fas fa-hospital"></i></div>
-            <div class="card-title">Plataforma Feluma</div>
-            <div class="card-desc">Portal institucional Feluma</div>
-            <a href="https://portal-feluma.sydle.com/home" target="_blank" class="card-btn">
-                Acessar <i class="fas fa-arrow-right"></i>
-            </a>
-        </div>
-
-        <!-- Card 14 -->
-        <div class="card">
-            <div class="card-icon-wrapper"><i class="fas fa-phone-alt"></i></div>
-            <div class="card-title">Contatos UBS's</div>
-            <div class="card-desc">Lista completa de todas as UBS</div>
-            <a href="https://regulacaoconsolidados-dot.github.io/contatosdasubs/" target="_blank" class="card-btn">
-                Acessar <i class="fas fa-arrow-right"></i>
-            </a>
-        </div>
-
-        <!-- Card 15 -->
-        <div class="card">
-            <div class="card-icon-wrapper"><i class="fas fa-map-pin"></i></div>
-            <div class="card-title">Pesquisa por Endereços</div>
-            <div class="card-desc">Localize unidades por endereço</div>
-            <a href="https://app.powerbi.com/view?r=eyJrIjoiYTRiZDcyZWYtMzAwNS00NmYyLTk3N2EtYWEwYTk2NTFhMmY1IiwidCI6ImFlODYzMzdlLTU3NWUtNDMzMC05NDc2LTkzZGU2ODJiMDAyMCJ9" target="_blank" class="card-btn">
-                Acessar <i class="fas fa-arrow-right"></i>
-            </a>
-        </div>
-
-        <!-- Card 16 -->
-        <div class="card">
-            <div class="card-icon-wrapper"><i class="fas fa-id-card"></i></div>
-            <div class="card-title">Pesquisa por CNS</div>
-            <div class="card-desc">Consulta ao Cartão Nacional de Saúde</div>
-            <a href="https://cnesadm.datasus.gov.br/cnesadm/publico/usuarios/cadastro" target="_blank" class="card-btn">
-                Acessar <i class="fas fa-arrow-right"></i>
-            </a>
-        </div>
-
-        <!-- Card 17 -->
-        <div class="card">
-            <div class="card-icon-wrapper"><i class="fas fa-phone-volume"></i></div>
-            <div class="card-title">Requalificação da Neurologia</div>
-            <div class="card-desc">Pausado Temporariamente</div>
-            <a href="https://docs.google.com/spreadsheets/d/1ZwzPVQAifNLfJJO1lFr1BvQd6e6G3yC5C2H4Ry2N43k/edit?gid=621702727#gid=621702727" target="_blank" class="card-btn">
-                Acessar <i class="fas fa-arrow-right"></i>
-            </a>
-        </div>
-
-
     </section>
 
     <!-- ===== RODAPÉ ===== -->
